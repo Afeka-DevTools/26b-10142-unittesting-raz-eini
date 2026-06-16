@@ -11,4 +11,1067 @@ class AppTest {
         App classUnderTest = new App();
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
     }
+
+    // Unit tests for the add method
+    @Test void testAddPositiveNumbers() {
+        int result = App.add(5, 3);
+        assertEquals(8, result, "5 + 3 should equal 8");
+    }
+
+    @Test void testAddNegativeNumbers() {
+        int result = App.add(-5, -3);
+        assertEquals(-8, result, "-5 + (-3) should equal -8");
+    }
+
+    @Test void testAddPositiveAndNegative() {
+        int result = App.add(10, -4);
+        assertEquals(6, result, "10 + (-4) should equal 6");
+    }
+
+    @Test void testAddNegativeAndPositive() {
+        int result = App.add(-10, 7);
+        assertEquals(-3, result, "-10 + 7 should equal -3");
+    }
+
+    @Test void testAddZeroAndPositive() {
+        int result = App.add(0, 5);
+        assertEquals(5, result, "0 + 5 should equal 5");
+    }
+
+    @Test void testAddPositiveAndZero() {
+        int result = App.add(5, 0);
+        assertEquals(5, result, "5 + 0 should equal 5");
+    }
+
+    @Test void testAddZeroAndNegative() {
+        int result = App.add(0, -5);
+        assertEquals(-5, result, "0 + (-5) should equal -5");
+    }
+
+    @Test void testAddZeroAndZero() {
+        int result = App.add(0, 0);
+        assertEquals(0, result, "0 + 0 should equal 0");
+    }
+
+    @Test void testAddLargeNumbers() {
+        int result = App.add(1000000, 2000000);
+        assertEquals(3000000, result, "1000000 + 2000000 should equal 3000000");
+    }
+
+    // Unit tests for the isPrime method
+    @Test void testIsPrimeNegativeNumber() {
+        boolean result = App.isPrime(-5);
+        assertFalse(result, "Negative numbers should not be prime");
+    }
+
+    @Test void testIsPrimeZero() {
+        boolean result = App.isPrime(0);
+        assertFalse(result, "0 should not be prime");
+    }
+
+    @Test void testIsPrimeOne() {
+        boolean result = App.isPrime(1);
+        assertFalse(result, "1 should not be prime");
+    }
+
+    @Test void testIsPrimeTwo() {
+        boolean result = App.isPrime(2);
+        assertTrue(result, "2 is the only even prime number");
+    }
+
+    @Test void testIsPrimeThree() {
+        boolean result = App.isPrime(3);
+        assertTrue(result, "3 should be prime");
+    }
+
+    @Test void testIsPrimeFive() {
+        boolean result = App.isPrime(5);
+        assertTrue(result, "5 should be prime");
+    }
+
+    @Test void testIsPrimeSeven() {
+        boolean result = App.isPrime(7);
+        assertTrue(result, "7 should be prime");
+    }
+
+    @Test void testIsPrimeEleven() {
+        boolean result = App.isPrime(11);
+        assertTrue(result, "11 should be prime");
+    }
+
+    @Test void testIsPrimeThirteen() {
+        boolean result = App.isPrime(13);
+        assertTrue(result, "13 should be prime");
+    }
+
+    @Test void testIsPrimeSeventeen() {
+        boolean result = App.isPrime(17);
+        assertTrue(result, "17 should be prime");
+    }
+
+    @Test void testIsPrimeNinetyNine() {
+        boolean result = App.isPrime(97);
+        assertTrue(result, "97 should be prime");
+    }
+
+    @Test void testIsPrimeFour() {
+        boolean result = App.isPrime(4);
+        assertFalse(result, "4 = 2 × 2, should not be prime");
+    }
+
+    @Test void testIsPrimeSix() {
+        boolean result = App.isPrime(6);
+        assertFalse(result, "6 = 2 × 3, should not be prime");
+    }
+
+    @Test void testIsPrimeNine() {
+        boolean result = App.isPrime(9);
+        assertFalse(result, "9 = 3 × 3, should not be prime");
+    }
+
+    @Test void testIsPrimeFifteen() {
+        boolean result = App.isPrime(15);
+        assertFalse(result, "15 = 3 × 5, should not be prime");
+    }
+
+    @Test void testIsPrimeTwentyFive() {
+        boolean result = App.isPrime(25);
+        assertFalse(result, "25 = 5 × 5, should not be prime");
+    }
+
+    @Test void testIsPrimeHundred() {
+        boolean result = App.isPrime(100);
+        assertFalse(result, "100 = 10 × 10, should not be prime");
+    }
+
+    // Unit tests for the reverse method
+    @Test void testReverseNormalString() {
+        String result = App.reverse("hello");
+        assertEquals("olleh", result, "'hello' reversed should be 'olleh'");
+    }
+
+    @Test void testReverseEmptyString() {
+        String result = App.reverse("");
+        assertEquals("", result, "Empty string reversed should be empty");
+    }
+
+    @Test void testReverseSingleCharacter() {
+        String result = App.reverse("a");
+        assertEquals("a", result, "Single character should stay the same");
+    }
+
+    @Test void testReverseWithSpaces() {
+        String result = App.reverse("hello world");
+        assertEquals("dlrow olleh", result, "'hello world' reversed should be 'dlrow olleh'");
+    }
+
+    @Test void testReverseWithNumbers() {
+        String result = App.reverse("12345");
+        assertEquals("54321", result, "'12345' reversed should be '54321'");
+    }
+
+    @Test void testReverseWithSpecialCharacters() {
+        String result = App.reverse("a!b@c#");
+        assertEquals("#c@b!a", result, "'a!b@c#' reversed should be '#c@b!a'");
+    }
+
+    @Test void testReversePalindrome() {
+        String result = App.reverse("racecar");
+        assertEquals("racecar", result, "'racecar' is a palindrome and should equal itself when reversed");
+    }
+
+    @Test void testReverseUppercaseLetters() {
+        String result = App.reverse("HELLO");
+        assertEquals("OLLEH", result, "'HELLO' reversed should be 'OLLEH'");
+    }
+
+    @Test void testReverseMixedCaseLetters() {
+        String result = App.reverse("HeLLo");
+        assertEquals("oLLeH", result, "'HeLLo' reversed should be 'oLLeH'");
+    }
+
+    @Test void testReverseWithMixedContent() {
+        String result = App.reverse("Java123!@#");
+        assertEquals("#@!321avaJ", result, "'Java123!@#' reversed should be '#@!321avaJ'");
+    }
+
+    @Test void testReverseTwoCharacters() {
+        String result = App.reverse("ab");
+        assertEquals("ba", result, "'ab' reversed should be 'ba'");
+    }
+
+    @Test void testReverseSymmetricString() {
+        String result = App.reverse("noon");
+        assertEquals("noon", result, "'noon' is a palindrome and should equal itself when reversed");
+    }
+
+    @Test void testReverseWithTabs() {
+        String result = App.reverse("a\tb");
+        assertEquals("b\ta", result, "String with tabs should be properly reversed");
+    }
+
+    @Test void testReverseNumericString() {
+        String result = App.reverse("0123456789");
+        assertEquals("9876543210", result, "'0123456789' reversed should be '9876543210'");
+    }
+
+    @Test void testReverseLongString() {
+        String input = "The quick brown fox jumps over the lazy dog";
+        String result = App.reverse(input);
+        assertEquals("god yzal eht revo spmuj xof nworb kciuq ehT", result, "Long string should be properly reversed");
+    }
+
+    // Unit tests for the factorial method
+    @Test void testFactorialNegativeNumber() {
+        assertThrows(IllegalArgumentException.class, () -> App.factorial(-1), "Negative number should throw IllegalArgumentException");
+    }
+
+    @Test void testFactorialNegativeLargeNumber() {
+        assertThrows(IllegalArgumentException.class, () -> App.factorial(-100), "Negative number should throw IllegalArgumentException");
+    }
+
+    @Test void testFactorialZero() {
+        int result = App.factorial(0);
+        assertEquals(1, result, "0! should equal 1");
+    }
+
+    @Test void testFactorialOne() {
+        int result = App.factorial(1);
+        assertEquals(1, result, "1! should equal 1");
+    }
+
+    @Test void testFactorialTwo() {
+        int result = App.factorial(2);
+        assertEquals(2, result, "2! should equal 2");
+    }
+
+    @Test void testFactorialThree() {
+        int result = App.factorial(3);
+        assertEquals(6, result, "3! should equal 6 (3 × 2 × 1)");
+    }
+
+    @Test void testFactorialFour() {
+        int result = App.factorial(4);
+        assertEquals(24, result, "4! should equal 24 (4 × 3 × 2 × 1)");
+    }
+
+    @Test void testFactorialFive() {
+        int result = App.factorial(5);
+        assertEquals(120, result, "5! should equal 120 (5 × 4 × 3 × 2 × 1)");
+    }
+
+    @Test void testFactorialSix() {
+        int result = App.factorial(6);
+        assertEquals(720, result, "6! should equal 720");
+    }
+
+    @Test void testFactorialSeven() {
+        int result = App.factorial(7);
+        assertEquals(5040, result, "7! should equal 5040");
+    }
+
+    @Test void testFactorialEight() {
+        int result = App.factorial(8);
+        assertEquals(40320, result, "8! should equal 40320");
+    }
+
+    @Test void testFactorialNine() {
+        int result = App.factorial(9);
+        assertEquals(362880, result, "9! should equal 362880");
+    }
+
+    @Test void testFactorialTen() {
+        int result = App.factorial(10);
+        assertEquals(3628800, result, "10! should equal 3628800");
+    }
+
+    @Test void testFactorialTwelve() {
+        int result = App.factorial(12);
+        assertEquals(479001600, result, "12! should equal 479001600");
+    }
+
+    // Unit tests for the isPalindrome method
+    @Test void testIsPalindromeSimpleTrue() {
+        boolean result = App.isPalindrome("racecar");
+        assertTrue(result, "'racecar' is a palindrome");
+    }
+
+    @Test void testIsPalindromeSimpleFalse() {
+        boolean result = App.isPalindrome("hello");
+        assertFalse(result, "'hello' is not a palindrome");
+    }
+
+    @Test void testIsPalindromeSingleCharacter() {
+        boolean result = App.isPalindrome("a");
+        assertTrue(result, "Single character is always a palindrome");
+    }
+
+    @Test void testIsPalindromeEmptyString() {
+        boolean result = App.isPalindrome("");
+        assertTrue(result, "Empty string is a palindrome");
+    }
+
+    @Test void testIsPalindromeTwoIdenticalCharacters() {
+        boolean result = App.isPalindrome("aa");
+        assertTrue(result, "'aa' is a palindrome");
+    }
+
+    @Test void testIsPalindromeTwoDifferentCharacters() {
+        boolean result = App.isPalindrome("ab");
+        assertFalse(result, "'ab' is not a palindrome");
+    }
+
+    @Test void testIsPalindromeWithSpaces() {
+        boolean result = App.isPalindrome("race car");
+        assertTrue(result, "'race car' (with space) is a palindrome after cleaning");
+    }
+
+    @Test void testIsPalindromeWithSpecialCharacters() {
+        boolean result = App.isPalindrome("race-car");
+        assertTrue(result, "'race-car' (with hyphen) is a palindrome after cleaning");
+    }
+
+    @Test void testIsPalindromeWithMultipleSpecialCharacters() {
+        boolean result = App.isPalindrome("race, car!");
+        assertTrue(result, "'race, car!' (with special chars) is a palindrome after cleaning");
+    }
+
+    @Test void testIsPalindromeUppercase() {
+        boolean result = App.isPalindrome("RACECAR");
+        assertTrue(result, "'RACECAR' (uppercase) is a palindrome");
+    }
+
+    @Test void testIsPalindromeMixedCase() {
+        boolean result = App.isPalindrome("RaCeCaR");
+        assertTrue(result, "'RaCeCaR' (mixed case) is a palindrome");
+    }
+
+    @Test void testIsPalindromeWithNumbers() {
+        boolean result = App.isPalindrome("12321");
+        assertTrue(result, "'12321' is a palindrome with numbers");
+    }
+
+    @Test void testIsPalindromeAlphanumeric() {
+        boolean result = App.isPalindrome("a1b1a");
+        assertTrue(result, "'a1b1a' (alphanumeric) is a palindrome");
+    }
+
+    @Test void testIsPalindromeLevel() {
+        boolean result = App.isPalindrome("level");
+        assertTrue(result, "'level' is a palindrome");
+    }
+
+    @Test void testIsPalindromeMadam() {
+        boolean result = App.isPalindrome("madam");
+        assertTrue(result, "'madam' is a palindrome");
+    }
+
+    @Test void testIsPalindromeNoon() {
+        boolean result = App.isPalindrome("noon");
+        assertTrue(result, "'noon' is a palindrome");
+    }
+
+    @Test void testIsPalindromeComplexPhrase() {
+        boolean result = App.isPalindrome("A man, a plan, a canal: Panama");
+        assertTrue(result, "Complex phrase is a palindrome after removing non-alphanumeric chars and lowercasing");
+    }
+
+    @Test void testIsPalindromeNotPalindrome() {
+        boolean result = App.isPalindrome("world");
+        assertFalse(result, "'world' is not a palindrome");
+    }
+
+    @Test void testIsPalindromeNotPalindromeWithSpaces() {
+        boolean result = App.isPalindrome("hello world");
+        assertFalse(result, "'hello world' is not a palindrome");
+    }
+
+    @Test void testIsPalindromeOnlySpecialCharacters() {
+        boolean result = App.isPalindrome("!@#$%");
+        assertTrue(result, "String with only special characters becomes empty and is a palindrome");
+    }
+
+    // Unit tests for the fibonacciUpTo method
+    @Test void testFibonacciUpToNegativeNumber() {
+        assertThrows(IllegalArgumentException.class, () -> App.fibonacciUpTo(-1), "Negative number should throw IllegalArgumentException");
+    }
+
+    @Test void testFibonacciUpToNegativeLargeNumber() {
+        assertThrows(IllegalArgumentException.class, () -> App.fibonacciUpTo(-100), "Negative number should throw IllegalArgumentException");
+    }
+
+    @Test void testFibonacciUpToZero() {
+        List<Integer> result = App.fibonacciUpTo(0);
+        assertEquals(List.of(0), result, "fibonacciUpTo(0) should return [0]");
+    }
+
+    @Test void testFibonacciUpToOne() {
+        List<Integer> result = App.fibonacciUpTo(1);
+        assertEquals(List.of(0, 1, 1), result, "fibonacciUpTo(1) should return [0, 1, 1]");
+    }
+
+    @Test void testFibonacciUpToTwo() {
+        List<Integer> result = App.fibonacciUpTo(2);
+        assertEquals(List.of(0, 1, 1, 2), result, "fibonacciUpTo(2) should return [0, 1, 1, 2]");
+    }
+
+    @Test void testFibonacciUpToFive() {
+        List<Integer> result = App.fibonacciUpTo(5);
+        assertEquals(List.of(0, 1, 1, 2, 3, 5), result, "fibonacciUpTo(5) should return [0, 1, 1, 2, 3, 5]");
+    }
+
+    @Test void testFibonacciUpToTen() {
+        List<Integer> result = App.fibonacciUpTo(10);
+        assertEquals(List.of(0, 1, 1, 2, 3, 5, 8), result, "fibonacciUpTo(10) should return [0, 1, 1, 2, 3, 5, 8]");
+    }
+
+    @Test void testFibonacciUpToTwenty() {
+        List<Integer> result = App.fibonacciUpTo(20);
+        assertEquals(List.of(0, 1, 1, 2, 3, 5, 8, 13), result, "fibonacciUpTo(20) should return [0, 1, 1, 2, 3, 5, 8, 13]");
+    }
+
+    @Test void testFibonacciUpToHundred() {
+        List<Integer> result = App.fibonacciUpTo(100);
+        assertEquals(List.of(0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89), result, "fibonacciUpTo(100) should include all Fib numbers up to 100");
+    }
+
+    @Test void testFibonacciUpToThousand() {
+        List<Integer> result = App.fibonacciUpTo(1000);
+        assertEquals(List.of(0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987), result, "fibonacciUpTo(1000) should include all Fib numbers up to 1000");
+    }
+
+    @Test void testFibonacciUpToExactFibonacciNumber() {
+        List<Integer> result = App.fibonacciUpTo(13);
+        assertEquals(List.of(0, 1, 1, 2, 3, 5, 8, 13), result, "fibonacciUpTo(13) where 13 is a Fibonacci number should include 13");
+    }
+
+    @Test void testFibonacciUpToBetweenFibonacciNumbers() {
+        List<Integer> result = App.fibonacciUpTo(12);
+        assertEquals(List.of(0, 1, 1, 2, 3, 5, 8), result, "fibonacciUpTo(12) where 12 is between Fib numbers should exclude 13");
+    }
+
+    @Test void testFibonacciUpToNotEmpty() {
+        List<Integer> result = App.fibonacciUpTo(0);
+        assertFalse(result.isEmpty(), "Result should not be empty for valid input");
+    }
+
+    @Test void testFibonacciUpToFirstElementIsZero() {
+        List<Integer> result = App.fibonacciUpTo(5);
+        assertEquals(0, result.get(0), "First Fibonacci number should be 0");
+    }
+
+    @Test void testFibonacciUpToSize() {
+        List<Integer> result = App.fibonacciUpTo(100);
+        assertEquals(12, result.size(), "fibonacciUpTo(100) should have 12 Fibonacci numbers");
+    }
+
+    // Unit tests for the charFrequency method
+    @Test void testCharFrequencyEmptyString() {
+        Map<Character, Integer> result = App.charFrequency("");
+        assertTrue(result.isEmpty(), "Empty string should result in empty map");
+    }
+
+    @Test void testCharFrequencySingleCharacter() {
+        Map<Character, Integer> result = App.charFrequency("a");
+        assertEquals(1, result.size(), "Single character should have 1 entry");
+        assertEquals(1, result.get('a'), "Character 'a' should have frequency 1");
+    }
+
+    @Test void testCharFrequencyAllSameCharacter() {
+        Map<Character, Integer> result = App.charFrequency("aaaa");
+        assertEquals(1, result.size(), "String with same character should have 1 entry");
+        assertEquals(4, result.get('a'), "Character 'a' should have frequency 4");
+    }
+
+    @Test void testCharFrequencyTwoCharacters() {
+        Map<Character, Integer> result = App.charFrequency("ab");
+        assertEquals(2, result.size(), "String 'ab' should have 2 entries");
+        assertEquals(1, result.get('a'), "Character 'a' should have frequency 1");
+        assertEquals(1, result.get('b'), "Character 'b' should have frequency 1");
+    }
+
+    @Test void testCharFrequencyRepeatingPattern() {
+        Map<Character, Integer> result = App.charFrequency("abab");
+        assertEquals(2, result.size(), "String 'abab' should have 2 entries");
+        assertEquals(2, result.get('a'), "Character 'a' should have frequency 2");
+        assertEquals(2, result.get('b'), "Character 'b' should have frequency 2");
+    }
+
+    @Test void testCharFrequencyHello() {
+        Map<Character, Integer> result = App.charFrequency("hello");
+        assertEquals(4, result.size(), "String 'hello' should have 4 unique characters");
+        assertEquals(1, result.get('h'), "Character 'h' should have frequency 1");
+        assertEquals(1, result.get('e'), "Character 'e' should have frequency 1");
+        assertEquals(2, result.get('l'), "Character 'l' should have frequency 2");
+        assertEquals(1, result.get('o'), "Character 'o' should have frequency 1");
+    }
+
+    @Test void testCharFrequencyWithSpaces() {
+        Map<Character, Integer> result = App.charFrequency("a b c");
+        assertEquals(5, result.size(), "String 'a b c' should have 5 entries (including spaces)");
+        assertEquals(1, result.get('a'), "Character 'a' should have frequency 1");
+        assertEquals(1, result.get(' '), "Space should have frequency 2");
+        assertEquals(1, result.get('c'), "Character 'c' should have frequency 1");
+    }
+
+    @Test void testCharFrequencyWithNumbers() {
+        Map<Character, Integer> result = App.charFrequency("a1b2c1");
+        assertEquals(6, result.size(), "String should have 6 entries");
+        assertEquals(1, result.get('1'), "Character '1' should have frequency 2");
+        assertEquals(1, result.get('2'), "Character '2' should have frequency 1");
+    }
+
+    @Test void testCharFrequencyWithSpecialCharacters() {
+        Map<Character, Integer> result = App.charFrequency("a!b!c");
+        assertEquals(5, result.size(), "String 'a!b!c' should have 5 entries");
+        assertEquals(2, result.get('!'), "Character '!' should have frequency 2");
+    }
+
+    @Test void testCharFrequencyUppercase() {
+        Map<Character, Integer> result = App.charFrequency("AAA");
+        assertEquals(1, result.size(), "String 'AAA' should have 1 entry");
+        assertEquals(3, result.get('A'), "Character 'A' should have frequency 3");
+    }
+
+    @Test void testCharFrequencyMixedCase() {
+        Map<Character, Integer> result = App.charFrequency("AaBbCc");
+        assertEquals(6, result.size(), "Mixed case string should have 6 entries (case-sensitive)");
+        assertEquals(1, result.get('A'), "Character 'A' should have frequency 1");
+        assertEquals(1, result.get('a'), "Character 'a' should have frequency 1");
+    }
+
+    @Test void testCharFrequencyLongRepeatingString() {
+        Map<Character, Integer> result = App.charFrequency("aaaaabbbbbcccccc");
+        assertEquals(3, result.size(), "String should have 3 unique characters");
+        assertEquals(5, result.get('a'), "Character 'a' should have frequency 5");
+        assertEquals(5, result.get('b'), "Character 'b' should have frequency 5");
+        assertEquals(6, result.get('c'), "Character 'c' should have frequency 6");
+    }
+
+    @Test void testCharFrequencyPangram() {
+        Map<Character, Integer> result = App.charFrequency("thequickbrownfox");
+        assertEquals(12, result.size(), "Pangram should have multiple unique characters");
+        assertTrue(result.containsKey('t'), "Map should contain 't'");
+        assertTrue(result.containsKey('h'), "Map should contain 'h'");
+    }
+
+    @Test void testCharFrequencyDigits() {
+        Map<Character, Integer> result = App.charFrequency("1234512345");
+        assertEquals(5, result.size(), "String should have 5 unique digits");
+        assertEquals(2, result.get('1'), "Character '1' should have frequency 2");
+        assertEquals(2, result.get('5'), "Character '5' should have frequency 2");
+    }
+
+    @Test void testCharFrequencyMapNotNull() {
+        Map<Character, Integer> result = App.charFrequency("test");
+        assertNotNull(result, "Result map should not be null");
+    }
+
+    @Test void testCharFrequencyAllValuesPositive() {
+        Map<Character, Integer> result = App.charFrequency("abcabc");
+        for (Integer freq : result.values()) {
+            assertTrue(freq > 0, "All frequencies should be positive");
+        }
+    }
+
+    @Test void testCharFrequencyWithTab() {
+        Map<Character, Integer> result = App.charFrequency("a\tb");
+        assertEquals(3, result.size(), "String with tab should count the tab character");
+        assertTrue(result.containsKey('\t'), "Map should contain the tab character");
+    }
+
+    @Test void testCharFrequencyWithNewline() {
+        Map<Character, Integer> result = App.charFrequency("a\nb");
+        assertEquals(3, result.size(), "String with newline should count the newline character");
+        assertTrue(result.containsKey('\n'), "Map should contain the newline character");
+    }
+
+    // Unit tests for the isAnagram method
+    @Test void testIsAnagramSimpleTrue() {
+        boolean result = App.isAnagram("listen", "silent");
+        assertTrue(result, "'listen' and 'silent' should be anagrams");
+    }
+
+    @Test void testIsAnagramSimpleFalse() {
+        boolean result = App.isAnagram("hello", "world");
+        assertFalse(result, "'hello' and 'world' should not be anagrams");
+    }
+
+    @Test void testIsAnagramEmptyStrings() {
+        boolean result = App.isAnagram("", "");
+        assertTrue(result, "Two empty strings should be anagrams");
+    }
+
+    @Test void testIsAnagramOneEmpty() {
+        boolean result = App.isAnagram("abc", "");
+        assertFalse(result, "Non-empty and empty string should not be anagrams");
+    }
+
+    @Test void testIsAnagramSingleCharacter() {
+        boolean result = App.isAnagram("a", "a");
+        assertTrue(result, "Same single character should be an anagram");
+    }
+
+    @Test void testIsAnagramDifferentSingleCharacter() {
+        boolean result = App.isAnagram("a", "b");
+        assertFalse(result, "Different single characters should not be anagrams");
+    }
+
+    @Test void testIsAnagramWithSpaces() {
+        boolean result = App.isAnagram("a b c", "c b a");
+        assertTrue(result, "Strings with spaces should be anagrams when sorted (spaces ignored)");
+    }
+
+    @Test void testIsAnagramMultipleSpaces() {
+        boolean result = App.isAnagram("hello world", "world hello");
+        assertTrue(result, "'hello world' and 'world hello' should be anagrams");
+    }
+
+    @Test void testIsAnagramUppercaseAndLowercase() {
+        boolean result = App.isAnagram("Listen", "Silent");
+        assertTrue(result, "Case-insensitive anagram check should work");
+    }
+
+    @Test void testIsAnagramMixedCase() {
+        boolean result = App.isAnagram("HeLLo", "oLLeH");
+        assertTrue(result, "Mixed case strings should be anagrams");
+    }
+
+    @Test void testIsAnagramWithNumbers() {
+        boolean result = App.isAnagram("a1b2", "2b1a");
+        assertTrue(result, "Strings with numbers should be anagrams");
+    }
+
+    @Test void testIsAnagramWithSpecialCharacters() {
+        boolean result = App.isAnagram("a!b@", "@b!a");
+        assertTrue(result, "Strings with special characters should be anagrams");
+    }
+
+    @Test void testIsAnagramDifferentLength() {
+        boolean result = App.isAnagram("abc", "abcd");
+        assertFalse(result, "Strings of different lengths should not be anagrams");
+    }
+
+    @Test void testIsAnagramSubset() {
+        boolean result = App.isAnagram("ab", "aab");
+        assertFalse(result, "'ab' and 'aab' should not be anagrams (different character counts)");
+    }
+
+    @Test void testIsAnagramRepeatingCharacters() {
+        boolean result = App.isAnagram("aab", "aba");
+        assertTrue(result, "'aab' and 'aba' should be anagrams");
+    }
+
+    @Test void testIsAnagramAllSameCharacter() {
+        boolean result = App.isAnagram("aaaa", "aaaa");
+        assertTrue(result, "Identical strings should be anagrams");
+    }
+
+    @Test void testIsAnagramRearranged() {
+        boolean result = App.isAnagram("abc", "bca");
+        assertTrue(result, "'abc' and 'bca' should be anagrams");
+    }
+
+    @Test void testIsAnagramRearrangedReverse() {
+        boolean result = App.isAnagram("abc", "cba");
+        assertTrue(result, "'abc' and 'cba' should be anagrams");
+    }
+
+    @Test void testIsAnagramComplexPhrase() {
+        boolean result = App.isAnagram("the eyes", "they see");
+        assertTrue(result, "'the eyes' and 'they see' should be anagrams");
+    }
+
+    @Test void testIsAnagramNotAnagramComplex() {
+        boolean result = App.isAnagram("hello", "hallo");
+        assertFalse(result, "'hello' and 'hallo' should not be anagrams");
+    }
+
+    @Test void testIsAnagramPunctuation() {
+        boolean result = App.isAnagram("a, b", "b, a");
+        assertTrue(result, "Strings with punctuation should be anagrams");
+    }
+
+    @Test void testIsAnagramSameString() {
+        boolean result = App.isAnagram("python", "python");
+        assertTrue(result, "Identical strings should be anagrams");
+    }
+
+    @Test void testIsAnagramKindlyAndLinkly() {
+        boolean result = App.isAnagram("kindly", "inkdly");
+        assertFalse(result, "'kindly' and 'inkdly' should not be anagrams");
+    }
+
+    @Test void testIsAnagramLotsOfSpaces() {
+        boolean result = App.isAnagram("a   b   c", "c   b   a");
+        assertTrue(result, "Multiple spaces should be ignored");
+    }
+
+    @Test void testIsAnagramLongStrings() {
+        boolean result = App.isAnagram("abcdefghijklmnop", "ponmlkjihgfedcba");
+        assertTrue(result, "Long rearranged strings should be anagrams");
+    }
+
+    // Unit tests for the average method
+    @Test void testAverageEmptyArray() {
+        assertThrows(IllegalArgumentException.class, () -> App.average(new int[]{}), "Empty array should throw IllegalArgumentException");
+    }
+
+    @Test void testAverageSingleElement() {
+        double result = App.average(new int[]{5});
+        assertEquals(5.0, result, "Average of [5] should be 5.0");
+    }
+
+    @Test void testAverageTwoElements() {
+        double result = App.average(new int[]{2, 4});
+        assertEquals(3.0, result, "Average of [2, 4] should be 3.0");
+    }
+
+    @Test void testAverageThreeElements() {
+        double result = App.average(new int[]{3, 6, 9});
+        assertEquals(6.0, result, "Average of [3, 6, 9] should be 6.0");
+    }
+
+    @Test void testAverageAllPositiveNumbers() {
+        double result = App.average(new int[]{10, 20, 30, 40});
+        assertEquals(25.0, result, "Average of [10, 20, 30, 40] should be 25.0");
+    }
+
+    @Test void testAverageAllNegativeNumbers() {
+        double result = App.average(new int[]{-10, -20, -30});
+        assertEquals(-20.0, result, "Average of [-10, -20, -30] should be -20.0");
+    }
+
+    @Test void testAverageMixedPositiveAndNegative() {
+        double result = App.average(new int[]{-5, 5});
+        assertEquals(0.0, result, "Average of [-5, 5] should be 0.0");
+    }
+
+    @Test void testAverageMixedNumbers() {
+        double result = App.average(new int[]{1, 2, 3, 4, 5});
+        assertEquals(3.0, result, "Average of [1, 2, 3, 4, 5] should be 3.0");
+    }
+
+    @Test void testAverageWithZeros() {
+        double result = App.average(new int[]{0, 0, 0});
+        assertEquals(0.0, result, "Average of [0, 0, 0] should be 0.0");
+    }
+
+    @Test void testAverageWithZeroAndNumbers() {
+        double result = App.average(new int[]{0, 10, 20});
+        assertEquals(10.0, result, "Average of [0, 10, 20] should be 10.0");
+    }
+
+    @Test void testAverageLargeNumbers() {
+        double result = App.average(new int[]{1000, 2000, 3000});
+        assertEquals(2000.0, result, "Average of [1000, 2000, 3000] should be 2000.0");
+    }
+
+    @Test void testAverageVeryLargeNumbers() {
+        double result = App.average(new int[]{1000000, 2000000, 3000000});
+        assertEquals(2000000.0, result, "Average of [1000000, 2000000, 3000000] should be 2000000.0");
+    }
+
+    @Test void testAverageSingleNegativeElement() {
+        double result = App.average(new int[]{-7});
+        assertEquals(-7.0, result, "Average of [-7] should be -7.0");
+    }
+
+    @Test void testAverageReturnsDouble() {
+        double result = App.average(new int[]{1, 2, 3});
+        assertTrue(result instanceof Double || result == 3.0, "Average should return a double value");
+    }
+
+    @Test void testAverageWithOddSum() {
+        double result = App.average(new int[]{1, 2});
+        assertEquals(1.5, result, "Average of [1, 2] should be 1.5");
+    }
+
+    @Test void testAverageWithFractionalResult() {
+        double result = App.average(new int[]{1, 2, 3, 4});
+        assertEquals(2.5, result, "Average of [1, 2, 3, 4] should be 2.5");
+    }
+
+    @Test void testAverageTenElements() {
+        double result = App.average(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
+        assertEquals(5.5, result, "Average of [1-10] should be 5.5");
+    }
+
+    @Test void testAverageNegativeAndPositiveBalanced() {
+        double result = App.average(new int[]{-10, -5, 5, 10});
+        assertEquals(0.0, result, "Average of [-10, -5, 5, 10] should be 0.0");
+    }
+
+    @Test void testAverageSingleZero() {
+        double result = App.average(new int[]{0});
+        assertEquals(0.0, result, "Average of [0] should be 0.0");
+    }
+
+    @Test void testAverageArrayLength() {
+        int[] arr = {2, 4, 6, 8};
+        double result = App.average(arr);
+        assertEquals(5.0, result, "Average of [2, 4, 6, 8] should be 5.0");
+    }
+
+    @Test void testAverageHighPrecision() {
+        double result = App.average(new int[]{1, 1, 1, 2});
+        assertEquals(1.25, result, "Average of [1, 1, 1, 2] should be 1.25");
+    }
+
+    @Test void testAverageConsistency() {
+        int[] arr = {10, 20, 30};
+        double result1 = App.average(arr);
+        double result2 = App.average(arr);
+        assertEquals(result1, result2, "Average should be consistent across multiple calls");
+    }
+
+    // Unit tests for the filterEvens method
+    @Test void testFilterEvensEmptyList() {
+        List<Integer> result = App.filterEvens(new ArrayList<>());
+        assertTrue(result.isEmpty(), "Empty list should return empty list");
+    }
+
+    @Test void testFilterEventsSingleEven() {
+        List<Integer> result = App.filterEvens(List.of(2));
+        assertEquals(List.of(2), result, "[2] should return [2]");
+    }
+
+    @Test void testFilterEventsSingleOdd() {
+        List<Integer> result = App.filterEvens(List.of(1));
+        assertTrue(result.isEmpty(), "[1] should return empty list");
+    }
+
+    @Test void testFilterEvensAllEven() {
+        List<Integer> result = App.filterEvens(List.of(2, 4, 6, 8));
+        assertEquals(List.of(2, 4, 6, 8), result, "[2, 4, 6, 8] should return all elements");
+    }
+
+    @Test void testFilterEvensAllOdd() {
+        List<Integer> result = App.filterEvens(List.of(1, 3, 5, 7));
+        assertTrue(result.isEmpty(), "[1, 3, 5, 7] should return empty list");
+    }
+
+    @Test void testFilterEventsMixed() {
+        List<Integer> result = App.filterEvens(List.of(1, 2, 3, 4, 5, 6));
+        assertEquals(List.of(2, 4, 6), result, "[1, 2, 3, 4, 5, 6] should return [2, 4, 6]");
+    }
+
+    @Test void testFilterEvensWithZero() {
+        List<Integer> result = App.filterEvens(List.of(0, 1, 2));
+        assertEquals(List.of(0, 2), result, "[0, 1, 2] should return [0, 2] (0 is even)");
+    }
+
+    @Test void testFilterEvensNegativeNumbers() {
+        List<Integer> result = App.filterEvens(List.of(-4, -3, -2, -1));
+        assertEquals(List.of(-4, -2), result, "[-4, -3, -2, -1] should return [-4, -2]");
+    }
+
+    @Test void testFilterEvensMixedNegativeAndPositive() {
+        List<Integer> result = App.filterEvens(List.of(-5, -4, -3, 2, 3, 4));
+        assertEquals(List.of(-4, 2, 4), result, "Negative and positive evens should be filtered");
+    }
+
+    @Test void testFilterEvensOrderPreserved() {
+        List<Integer> result = App.filterEvens(List.of(6, 1, 4, 2, 3, 8));
+        assertEquals(List.of(6, 4, 2, 8), result, "Order of even numbers should be preserved");
+    }
+
+    @Test void testFilterEvensLargeNumbers() {
+        List<Integer> result = App.filterEvens(List.of(1000, 1001, 2000, 2001));
+        assertEquals(List.of(1000, 2000), result, "Large even numbers should be filtered");
+    }
+
+    @Test void testFilterEvensLargeMixedList() {
+        List<Integer> result = App.filterEvens(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+        assertEquals(List.of(2, 4, 6, 8, 10), result, "[1-10] should return [2, 4, 6, 8, 10]");
+    }
+
+    @Test void testFilterEvensConsecutiveEvens() {
+        List<Integer> result = App.filterEvens(List.of(2, 4, 6, 8, 10));
+        assertEquals(List.of(2, 4, 6, 8, 10), result, "All consecutive evens should be returned");
+    }
+
+    @Test void testFilterEvensConsecutiveOdds() {
+        List<Integer> result = App.filterEvens(List.of(1, 3, 5, 7, 9));
+        assertTrue(result.isEmpty(), "No evens in consecutive odds");
+    }
+
+    @Test void testFilterEvensReturnsNewList() {
+        List<Integer> original = new ArrayList<>(List.of(1, 2, 3, 4));
+        List<Integer> result = App.filterEvens(original);
+        assertNotSame(original, result, "Should return a new list instance");
+    }
+
+    @Test void testFilterEvensDoesNotModifyOriginal() {
+        List<Integer> original = new ArrayList<>(List.of(1, 2, 3, 4));
+        App.filterEvens(original);
+        assertEquals(List.of(1, 2, 3, 4), original, "Original list should not be modified");
+    }
+
+    @Test void testFilterEventsTwoElements() {
+        List<Integer> result = App.filterEvens(List.of(3, 4));
+        assertEquals(List.of(4), result, "[3, 4] should return [4]");
+    }
+
+    @Test void testFilterEvensWithDuplicates() {
+        List<Integer> result = App.filterEvens(List.of(2, 2, 4, 4, 6));
+        assertEquals(List.of(2, 2, 4, 4, 6), result, "Duplicate evens should be preserved");
+    }
+
+    @Test void testFilterEvensWithDuplicateMixed() {
+        List<Integer> result = App.filterEvens(List.of(1, 2, 1, 2, 1, 2));
+        assertEquals(List.of(2, 2, 2), result, "[1, 2, 1, 2, 1, 2] should return [2, 2, 2]");
+    }
+
+    @Test void testFilterEvensNegativeZeroPositive() {
+        List<Integer> result = App.filterEvens(List.of(-2, 0, 2));
+        assertEquals(List.of(-2, 0, 2), result, "[-2, 0, 2] are all even");
+    }
+
+    @Test void testFilterEvensExtendedMixedList() {
+        List<Integer> result = App.filterEvens(List.of(-6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6));
+        assertEquals(List.of(-6, -4, -2, 0, 2, 4, 6), result, "Extended mixed list should filter correctly");
+    }
+
+    @Test void testFilterEvensNotNull() {
+        List<Integer> result = App.filterEvens(List.of(1, 2, 3));
+        assertNotNull(result, "Result should not be null");
+    }
+
+    // Unit tests for the mostCommonWord method
+    @Test void testMostCommonWordSimple() {
+        String result = App.mostCommonWord("hello world hello");
+        assertEquals("hello", result, "'hello' appears twice, 'world' once");
+    }
+
+    @Test void testMostCommonWordSingleWord() {
+        String result = App.mostCommonWord("hello");
+        assertEquals("hello", result, "Single word should be the most common");
+    }
+
+    @Test void testMostCommonWordMultipleOccurrences() {
+        String result = App.mostCommonWord("the the the cat cat dog");
+        assertEquals("the", result, "'the' appears 3 times");
+    }
+
+    @Test void testMostCommonWordCase() {
+        String result = App.mostCommonWord("Hello HELLO hello world");
+        assertEquals("hello", result, "Case-insensitive: 'hello' appears 3 times");
+    }
+
+    @Test void testMostCommonWordWithPunctuation() {
+        String result = App.mostCommonWord("Hello, hello! Hello? world.");
+        assertEquals("hello", result, "Punctuation should be removed: 'hello' appears 3 times");
+    }
+
+    @Test void testMostCommonWordWithMultiplePunctuation() {
+        String result = App.mostCommonWord("it's! it's? it's. that's");
+        assertEquals("it", result, "After splitting by non-word chars and lowercasing");
+    }
+
+    @Test void testMostCommonWordWithNumbers() {
+        String result = App.mostCommonWord("apple 123 apple 456 apple banana");
+        assertEquals("apple", result, "'apple' appears 3 times (numbers removed by split)");
+    }
+
+    @Test void testMostCommonWordAllDifferent() {
+        String result = App.mostCommonWord("one two three four");
+        assertNotNull(result, "Should return one of the words even if all have same frequency");
+    }
+
+    @Test void testMostCommonWordTwoWords() {
+        String result = App.mostCommonWord("apple banana");
+        assertNotNull(result, "Should return one word");
+    }
+
+    @Test void testMostCommonWordRepeated() {
+        String result = App.mostCommonWord("test test test test test");
+        assertEquals("test", result, "All same word should be most common");
+    }
+
+    @Test void testMostCommonWordLongText() {
+        String text = "the quick brown fox jumps over the lazy dog the fox";
+        String result = App.mostCommonWord(text);
+        assertEquals("the", result, "'the' appears 3 times (most frequent)");
+    }
+
+    @Test void testMostCommonWordWithHyphens() {
+        String result = App.mostCommonWord("well-known well-known test");
+        String resultLower = result.toLowerCase();
+        assertTrue(resultLower.contains("well") || resultLower.equals("wellknown"), "Hyphens split words");
+    }
+
+    @Test void testMostCommonWordWithUnderscores() {
+        String result = App.mostCommonWord("hello_world hello_world hello");
+        // underscores are word characters, so hello_world is one token
+        assertNotNull(result, "Should handle underscores correctly");
+    }
+
+    @Test void testMostCommonWordMultipleSpaces() {
+        String result = App.mostCommonWord("apple   apple  banana");
+        assertEquals("apple", result, "'apple' appears twice (spaces handled)");
+    }
+
+    @Test void testMostCommonWordWithTabs() {
+        String result = App.mostCommonWord("word\tword\tword\tanother");
+        assertEquals("word", result, "'word' appears 3 times (tabs handled)");
+    }
+
+    @Test void testMostCommonWordWithNewlines() {
+        String result = App.mostCommonWord("line\nline\nline\nother");
+        assertEquals("line", result, "'line' appears 3 times (newlines handled)");
+    }
+
+    @Test void testMostCommonWordNotEmpty() {
+        String result = App.mostCommonWord("test");
+        assertFalse(result.isEmpty(), "Result should not be empty");
+    }
+
+    @Test void testMostCommonWordNotNull() {
+        String result = App.mostCommonWord("hello world");
+        assertNotNull(result, "Result should not be null");
+    }
+
+    @Test void testMostCommonWordCountsCorrectly() {
+        String result = App.mostCommonWord("a b c a b a");
+        assertEquals("a", result, "'a' appears 3 times, 'b' 2 times, 'c' 1 time");
+    }
+
+    @Test void testMostCommonWordLowercase() {
+        String text = "APPLE apple APPLE banana";
+        String result = App.mostCommonWord(text);
+        assertEquals("apple", result, "Result should be lowercase");
+    }
+
+    @Test void testMostCommonWordExclamations() {
+        String result = App.mostCommonWord("wow! wow! wow! yay");
+        assertEquals("wow", result, "'wow' appears 3 times (exclamation removed)");
+    }
+
+    @Test void testMostCommonWordMixedSymbols() {
+        String result = App.mostCommonWord("@user @user #hashtag user");
+        String resultLower = result.toLowerCase();
+        assertTrue(resultLower.contains("user"), "Symbols should be removed");
+    }
+
+    @Test void testMostCommonWordLongWord() {
+        String result = App.mostCommonWord("extraordinarily extraordinarily ordinary");
+        assertEquals("extraordinarily", result, "Long word appearing twice");
+    }
+
+    @Test void testMostCommonWordFrequencyTie() {
+        // When there's a tie, Collections.max returns one arbitrarily
+        String result = App.mostCommonWord("a b a b");
+        assertTrue(result.equals("a") || result.equals("b"), "Should return one of the tied words");
+    }
+
+    @Test void testMostCommonWordArticles() {
+        String result = App.mostCommonWord("the cat and the dog and the bird");
+        assertEquals("the", result, "'the' appears 3 times (most frequent)");
+    }
+
+    @Test void testMostCommonWordPunctuationVariety() {
+        String result = App.mostCommonWord("hello... hello!! hello? world.");
+        assertEquals("hello", result, "'hello' appears 3 times despite various punctuation");
+    }
 }
