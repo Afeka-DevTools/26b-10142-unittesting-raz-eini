@@ -6,12 +6,11 @@ package org.example;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
-    }
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
+class AppTest {
     // Unit tests for the add method
     @Test void testAddPositiveNumbers() {
         int result = App.add(5, 3);
@@ -508,22 +507,22 @@ class AppTest {
 
     @Test void testCharFrequencyWithSpaces() {
         Map<Character, Integer> result = App.charFrequency("a b c");
-        assertEquals(5, result.size(), "String 'a b c' should have 5 entries (including spaces)");
+        assertEquals(4, result.size(), "String 'a b c' should have 4 unique characters (including space)");
         assertEquals(1, result.get('a'), "Character 'a' should have frequency 1");
-        assertEquals(1, result.get(' '), "Space should have frequency 2");
+        assertEquals(2, result.get(' '), "Space should have frequency 2");
         assertEquals(1, result.get('c'), "Character 'c' should have frequency 1");
     }
 
     @Test void testCharFrequencyWithNumbers() {
         Map<Character, Integer> result = App.charFrequency("a1b2c1");
-        assertEquals(6, result.size(), "String should have 6 entries");
-        assertEquals(1, result.get('1'), "Character '1' should have frequency 2");
+        assertEquals(5, result.size(), "String should have 5 unique characters");
+        assertEquals(2, result.get('1'), "Character '1' should have frequency 2");
         assertEquals(1, result.get('2'), "Character '2' should have frequency 1");
     }
 
     @Test void testCharFrequencyWithSpecialCharacters() {
         Map<Character, Integer> result = App.charFrequency("a!b!c");
-        assertEquals(5, result.size(), "String 'a!b!c' should have 5 entries");
+        assertEquals(4, result.size(), "String 'a!b!c' should have 4 unique characters");
         assertEquals(2, result.get('!'), "Character '!' should have frequency 2");
     }
 
@@ -550,7 +549,7 @@ class AppTest {
 
     @Test void testCharFrequencyPangram() {
         Map<Character, Integer> result = App.charFrequency("thequickbrownfox");
-        assertEquals(12, result.size(), "Pangram should have multiple unique characters");
+        assertEquals(15, result.size(), "Pangram should have 15 unique characters");
         assertTrue(result.containsKey('t'), "Map should contain 't'");
         assertTrue(result.containsKey('h'), "Map should contain 'h'");
     }
@@ -699,7 +698,7 @@ class AppTest {
 
     @Test void testIsAnagramKindlyAndLinkly() {
         boolean result = App.isAnagram("kindly", "inkdly");
-        assertFalse(result, "'kindly' and 'inkdly' should not be anagrams");
+        assertTrue(result, "'kindly' and 'inkdly' should be anagrams");
     }
 
     @Test void testIsAnagramLotsOfSpaces() {
@@ -779,7 +778,7 @@ class AppTest {
 
     @Test void testAverageReturnsDouble() {
         double result = App.average(new int[]{1, 2, 3});
-        assertTrue(result instanceof Double || result == 3.0, "Average should return a double value");
+        assertEquals(2.0, result, "Average should return 2.0 for [1, 2, 3]");
     }
 
     @Test void testAverageWithOddSum() {
@@ -966,7 +965,7 @@ class AppTest {
 
     @Test void testMostCommonWordWithMultiplePunctuation() {
         String result = App.mostCommonWord("it's! it's? it's. that's");
-        assertEquals("it", result, "After splitting by non-word chars and lowercasing");
+        assertEquals("s", result, "After splitting by non-word chars and lowercasing, 's' appears most often");
     }
 
     @Test void testMostCommonWordWithNumbers() {
@@ -998,7 +997,7 @@ class AppTest {
     @Test void testMostCommonWordWithHyphens() {
         String result = App.mostCommonWord("well-known well-known test");
         String resultLower = result.toLowerCase();
-        assertTrue(resultLower.contains("well") || resultLower.equals("wellknown"), "Hyphens split words");
+        assertTrue(resultLower.equals("well") || resultLower.equals("known"), "Hyphens split words into 'well' and 'known'");
     }
 
     @Test void testMostCommonWordWithUnderscores() {
